@@ -1,0 +1,23 @@
+// Partial sass file (as it has the _underscore)
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* inherit keyword >> forces inheritance */
+  box-sizing: inherit;
+}
+
+html {
+  /* % of the default browser font-size (usually 16px) */
+  /* Should not set it to a px value, as then users cannot change it
+     if they wish to do so
+   */
+   // Defines what 1 rem is (10px)
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

@@ -1,0 +1,88 @@
+- Each property has an initial value, used if nothing is declared (and if
+there is no inheritance)
+- Browsers specify a root font size (usually 16px)
+- Percentages are measured relative to their parent's font-size, if used
+to specify font-size
+- Percentages are measured relative to their parent's width, if used
+to specify lengths
+- ems are measured relative to their parent font-size, if used to specify fs
+- ems are measured relative to current font-size, if used to specify lengths
+- rems are always measured relative to the document's root font-size
+
+
+The visual formatting model
+
+- Algorithm that calculates boxes and determines the layout of these boxes,
+for each element in the render tree, in order to determine the final
+layout of the page
+
+1: The box model
+2: Box types (inline, block-level, inline-block)
+3: Positioning schemes: normal flow, absolute positioning and floats
+4: Stacking context: (using z-index; but also opacity, transform, filter, etc.)
+
+
+The box model
+
+- Content: text, images
+- Padding: white space around the content, inside the box
+- Border: line that goes around the padding and the content
+- Margin: space between the boxes
+- Fill area: area that gets filled with background color or background image
+
+Block level boxes (display: block/flex/list-item/table)
+
+- Elements formatted visually as blocks
+- 100% of parent's width
+- Vertically, one after another
+- Box model applies
+
+Inline boxes (display: inline)
+
+- Content is distributed in lines
+- Occupies only content's space
+- No line-breaks
+- No heights or widths
+- Paddings and margins only horizontal (left and right)
+
+Inline-block boxes (display: inline-block)
+
+- A mix of block and inline
+- Occupies only content's space
+- No line-breaks
+- Box model applies
+
+<--- BEM method --->
+
+element >> __name
+modifier >> --name
+
+<--- SCSS --->
+
+- Mixins: create a bundle of styles that can be reused; they can use variables;
+When SCSS code is compiled to CSS, the mixin code is added to the css selector
+(extends works other way around, where a new css selector is created);
+
+e.g.
+@mixin style-link-text($col) {
+  text-decoration: none;
+  color: $col;
+}
+
+To include it, @include style-link-text(#fff);
+
+- Extends: create a bundle of styles; When using extends, the css code will
+actually have a whole new selector created with the extend style.
+
+e.g.
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-main {
+  &:link {
+    @extend %btn-placeholder;
+  }
+}

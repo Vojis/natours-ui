@@ -1,0 +1,59 @@
+@mixin clearfix {
+  // the & will become the selector in which we nest this mixin
+  // e.g. if we're using it in .row, the &::after will become .row::after
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+1200 - 1800px:  Where our normal styles apply
+>1800px:        Big desktop
+*/
+
+@mixin respond-phone {
+  @media(max-width: 600px) { @content };
+}
+
+/*
+
+$breakpoint argument choices:
+  - phone
+  - tab-port
+  - tab-land
+  - big-desktop
+
+*/
+
+// ems are best option for mediaqueries, as rems work
+// differently inside MQ. ems will take into consideration the
+// default font size of the browser, which is almost always 16px;
+// For this reason, we will set ems following this px size.
+
+// using ems instead of pixels in case the user changes the
+// default font size by him/herself
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media(max-width: 37.5em) { @content }; // 600px
+  }
+
+  @if $breakpoint == tab-port {
+    @media(max-width: 56.25em) { @content }; // 900px
+  }
+
+  @if $breakpoint == tab-land {
+    @media(max-width: 75em) { @content }; // 1200px
+  }
+
+  @if $breakpoint == big-desktop {
+    @media(min-width: 112.5em) { @content }; // 1800px
+  }
+}

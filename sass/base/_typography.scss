@@ -1,0 +1,78 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
+
+  box-sizing: border-box;
+}
+
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+
+  /* Determines whether the 'back' side of a transformed element
+     is visible when facing the viewer.
+     It is used when the animation is "shaky" (especially when we
+     rotate some items)
+  */
+  backface-visibility: hidden;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation: moveInFromLeft 1s ease-out;
+
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 0.3s; */
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+
+    animation: moveInFromRight 1s ease-out;
+    text-align: left;
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  // trick to set the gradient color only on letters
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  // trick end
+  letter-spacing: .2rem;
+  transition: all .2s;
+
+  // &:hover {
+  //   transform: skewY(2deg) skewX(15deg) scale(1.1);
+  //   text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  // }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
